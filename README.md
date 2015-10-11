@@ -17,6 +17,7 @@ Current features:
 
 Nice to have:
 - read from a list of RSS feeds
+- add tests
 - improve date parsing to allow different RSS formats
 - pass as arguments, do not touch code
 - improve docx formatting (bold, italics, etc)
