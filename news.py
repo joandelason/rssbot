@@ -2,11 +2,9 @@ import feedparser;
 import datetime, time;
 from collections import namedtuple
 import htmlReader, docxConverter, locale, os
+
+import urllib2;
 from calendar import TimeEncoding, month_name
-
-
-bitdaily = "http://www.bitdaily.com/taxonomy/term/1446/all/feed";
-
 
 
 #includes the links to all posts  to avoid overwriting existing ones 
@@ -21,9 +19,11 @@ class RssNewsSpider:
         dom = feedparser.parse(rssUrl)
         self.news = dict()
         self.all_posts = self.getAllPostsFromFile()
-        
+        print "There are {0} posts in feed '{1}'".format( len(dom.entries), rssUrl)
+                
         for post in dom.entries:
-            updated = self.parse_date(post)
+            updated = self.parse_date(post)            
+            post.link = self.getFinalUrlAfterRedirect(post.link)
             
             if updated != None and not self.isPostAlreadyInPostsFile(post.link):
                 self.addPostToFile(post.link)
@@ -91,7 +91,7 @@ class RssNewsSpider:
     
     def isPostAlreadyInPostsFile(self, link):
         if not link in self.all_posts:
-            print 'discarded ' + link
+            print "Ignoring '" + link +"'"
             
         return link in self.all_posts
         
@@ -100,4 +100,13 @@ class RssNewsSpider:
         with open(POSTS_FILE, "a") as file:
             file.write(link+'\n')
 
+    def getFinalUrlAfterRedirect(self, rss_url):
+        hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+               'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+               'Accept-Encoding': 'none',
+               'Accept-Language': 'en-US,en;q=0.8',
+               'Connection': 'keep-alive'}
+        req = urllib2.Request(rss_url, headers=hdr)
+        return urllib2.urlopen(req).geturl().split('?')[0]
 
