@@ -5,6 +5,7 @@ Python bot that downloads news from any RSS feed, converts them to docx format a
 Use cases: 
 - keep track of any hot topic in an organized way (like Bitcoin).
 - compare news coming from different media
+- create an archive of news diggests
 
 Maybe journalists will find it useful if there is no better (and free) tool.
 
@@ -16,8 +17,10 @@ Current features:
 
 Nice to have:
 - read from a list of RSS feeds
-- better date parsing
+- improve date parsing to allow different RSS formats
 - pass as arguments, do not touch code
-- improve docx formatting
+- improve docx formatting (bold, italics, etc)
 - add the post's main image (if any)
+- convert them to PDF
+- add tags feature to be able to organize them by topic
 - add GUI to set up bot (feed's URL, refresh frequency, root location, ...)
