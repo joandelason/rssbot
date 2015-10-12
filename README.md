@@ -25,3 +25,9 @@ Nice to have:
 - convert them to PDF
 - add tags feature to be able to organize them by topic
 - add GUI to set up bot (feed's URL, refresh frequency, root location, ...)
+
+USAGE:
+Just type
+python newsbot.py
+
+You will need to change the feeds list in the code according to your interests.
