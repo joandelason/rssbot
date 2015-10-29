@@ -24,8 +24,9 @@ Maybe journalists will find it useful if there is no better (and free) tool.
 - add tags feature to be able to organize them by topic
 - add GUI to set up bot (feed's URL, refresh frequency, root location, ...)
 
-USAGE:
+##Usage:
 Just type on the command line:
+
 python newsbot.py
 
 You will need to change the feeds list in the code according to your interests.
