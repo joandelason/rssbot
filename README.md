@@ -9,6 +9,13 @@ Python bot that downloads news from any RSS feed, converts them to docx format a
 
 Maybe journalists will find it useful if there is no better (and free) tool.
 
+##Screenshots
+
+![overview](https://cloud.githubusercontent.com/assets/15065645/10857587/3c18add4-7f4f-11e5-8f20-89b1a3b52ae6.png)
+
+![overview2](https://cloud.githubusercontent.com/assets/15065645/10857593/475027a4-7f4f-11e5-8863-1051ee427ed5.png)
+
+
 ##Current features:
 - scrape from a list of RSS feeds
 - ads and HTML clutter removal
