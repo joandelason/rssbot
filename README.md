@@ -2,18 +2,19 @@
 
 Python bot that downloads news from any RSS feed, converts them to docx format after striping all HTML and ads clutter -sth. like the Safari Reader mode- and organizes them chronologically in folders according to the posts' publishing date. 
 
-##Use cases: 
-- keep track of any hot topic in an organized way (like Bitcoin).
-- compare news coming from different media
-- create an archive of news diggests
-
-Maybe journalists will find it useful if there is no better (and free) tool.
 
 ##Screenshots
 
 ![overview](https://cloud.githubusercontent.com/assets/15065645/10857587/3c18add4-7f4f-11e5-8f20-89b1a3b52ae6.png)
 
 ![overview2](https://cloud.githubusercontent.com/assets/15065645/10857593/475027a4-7f4f-11e5-8863-1051ee427ed5.png)
+
+##Use cases: 
+- keep track of any hot topic in an organized way (like Bitcoin).
+- compare news coming from different media
+- create an archive of news diggests
+
+Maybe journalists will find it useful if there is no better (and free) tool.
 
 
 ##Current features:
