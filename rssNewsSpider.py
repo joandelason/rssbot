@@ -5,7 +5,7 @@ import htmlReader, docxConverter, locale, os
 
 import urllib2;
 from calendar import TimeEncoding, month_name
-
+import dateutil.parser 
 
 #includes the links to all posts  to avoid overwriting existing ones 
 POSTS_FILE = 'posts.txt'
@@ -19,6 +19,9 @@ class RssNewsSpider:
         dom = feedparser.parse(rssUrl)
         self.news = dict()
         self.all_posts = self.getAllPostsFromFile()
+        self.addedPosts = 0
+        self.ignoredPosts = 0
+        
         print "There are {0} posts in feed '{1}'".format( len(dom.entries), rssUrl)
                 
         for post in dom.entries:
@@ -39,11 +42,16 @@ class RssNewsSpider:
 
     def parse_date(self, post):
         if post.updated_parsed !=None:            
-            return post.updated_parsed #que objeto es ? datetime, time
+            return post.updated_parsed 
 
-        date  = post.updated.split(' ')[0]
+        try:
+            date  = dateutil.parser.parse(post.updated)
+        except ValueError:
+            date = ''
+            
         if date == '':
             return None
+        
         return time.strptime(date, "%m/%d/%Y")
 
 
@@ -55,7 +63,8 @@ class RssNewsSpider:
             currentpath = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) 
 
             filepath = currentpath +'/' + self.get_relative_path(postModel.updated)                
-            print "Adding post '" + reader.getTitle() + "' to " + filepath                
+            print "Adding post '" + reader.getTitle() + "' to " + filepath    
+            self.addedPosts+=1            
             c = docxConverter.DocxConverter( reader.getTitle(), reader.getContent(), link, filepath)
                 
                 
@@ -78,7 +87,7 @@ class RssNewsSpider:
         month = '{0} {1}'.format(self.get_localized_month_name(date), date.year)
         year = date.year;
                         
-        return "{0}/{1}/{2}".format(year, month, day)
+        return "BITCOIN/{0}/{1}/{2}".format(year, month, day)
         
 
     def getAllPostsFromFile(self):
@@ -92,6 +101,7 @@ class RssNewsSpider:
     def isPostAlreadyInPostsFile(self, link):
         if not link in self.all_posts:
             print "Ignoring '" + link +"'"
+            self.ignoredPosts+=1
             
         return link in self.all_posts
         

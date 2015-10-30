@@ -36,4 +36,3 @@ class HtmlReader:
         return BeautifulSoup(self.text, "lxml").getText()
 
 
-
