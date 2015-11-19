@@ -43,4 +43,4 @@ Just type on the command line:
 
 python newsbot.py
 
-You will need to change the feeds list in the code according to your interests and renaming the root folder.
+You may want to change the feeds list in the code according to your interests and rename the root folder.
