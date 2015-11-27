@@ -24,6 +24,8 @@ Maybe journalists will find it useful if there is no better (and free) tool.
 - chronological organization in folders
 
 ##Nice to have:
+If you found this project interesting and want to contribute, these are the main ideas that come to my mind:
+
 - add tests
 - pass RSS url and root location as arguments, do not touch code
 - package the app in a bundle, so no need to install dependencies
@@ -33,7 +35,7 @@ Maybe journalists will find it useful if there is no better (and free) tool.
 - add tags feature to be able to organize them by sub-topic (call an AI web service like IBM's Watson)
 - add GUI to set up bot (feed's URL, refresh frequency, root location, ...)
 
-If you found this project interesting and want to contribute, these are the main ideas that come to my mind.
+
 
 ##Installation:
 There are several dependencies that need to be installed:
