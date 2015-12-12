@@ -9,13 +9,13 @@ import rssNewsSpider
 FREQUENCY_HOURS = 60*60*6 
 
 
-RSS_list = {
+RSS_list = [
         'http://redfivesoftware.com/AltCoin.xml',
         'http://www.bitcoinnoticias.com/?format=feed&type=rss',
         'https://letstalkbitcoin.com/rss/feed/blog',
         'http://thebitcoin.news/feed/',
         'http://elbitcoin.org/feed/'
-       }
+       ]
 
     
 
